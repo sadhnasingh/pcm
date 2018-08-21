@@ -12,7 +12,8 @@
   <strong>Text:</strong>
   <%= @contactadmin.text %>
 </p>
-
+<%if current_user && current_user.admin %>
 <%= link_to 'Back', contactadmins_path,class:"btn btn-success" %>
+<%end%>
 </td>
 </table>

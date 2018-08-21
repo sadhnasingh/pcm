@@ -12,12 +12,8 @@
 
 ActiveRecord::Schema.define(version: 2018_08_20_120040) do
 
-  create_table "articles", force: :cascade do |t|
-    t.string "title"
-    t.text "text"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -55,7 +51,7 @@ ActiveRecord::Schema.define(version: 2018_08_20_120040) do
   create_table "reports", force: :cascade do |t|
     t.string "Name"
     t.text "body"
-    t.integer "product_id"
+    t.bigint "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_reports_on_product_id"
@@ -79,4 +75,5 @@ ActiveRecord::Schema.define(version: 2018_08_20_120040) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "reports", "products"
 end
