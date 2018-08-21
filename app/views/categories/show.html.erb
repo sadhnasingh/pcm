@@ -1,0 +1,23 @@
+<br><table border="2px" align="center" width="25%", style="background-color: violet ">
+  <td><p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @category.name %>
+</p>
+
+<p>
+  <strong>Desc:</strong>
+  <%= @category.desc %>
+</p>
+<p><%= image_tag @category.image_url.to_s, style:"height: 70px; width: 100px;" %></p>
+<%if current_user && current_user.admin %>
+<%= link_to 'Edit', edit_category_path(@category),class:"btn btn-success"%> |
+<%end%>
+<%= link_to 'Back', products_path,class:"btn btn-success" %>
+<h3 style="color:green"> Products under this category </h3>
+<% Product.where(category_id: @category.id).each do |product| %>
+<li> <%= link_to product.name, product ,class:"btn btn-success"%> </li><br>
+<% end %>
+</td></table>
+

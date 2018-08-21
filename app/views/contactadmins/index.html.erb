@@ -1,0 +1,24 @@
+<table border="2px" align="center" width="50%", style="background-color:violet ">
+<center><h1>All Complains</h1></center>
+<td>
+  <tr>
+    <th>Name</th>
+    <th>Title</th>
+    <th>Text</th>
+    <th colspan="3"></th>
+  </tr>
+ 
+  <% @contactadmins.each do |contactadmin| %>
+    <tr>
+      <td><%= contactadmin.name %></td>
+      <td><%= contactadmin.title %></td>
+      <td><%= contactadmin.text %></td>
+      <td><%= link_to 'Show', contactadmin_path(contactadmin),class:"btn btn-success" %></td>
+      
+      <td><%= link_to 'Destroy', contactadmin_path(contactadmin),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } ,class:"btn btn-success"%></td>
+    </tr>
+  <% end %>
+</td>
+</table>

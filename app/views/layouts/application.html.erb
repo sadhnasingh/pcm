@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pcm</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div id="user_nav">
+      <center><% if user_signed_in? %> <h6 style="color:green">Signed in as</h6> <%= current_user.email %><h6 style="color:green">.Not you?</h6>
+        <%= link_to "Sign out", destroy_user_session_path, :method=> :delete,  class:"btn btn-success" %>
+        <% else %><br>
+        <%= link_to "Sign up", new_user_registration_path,class:"btn btn-success"%> or <%= link_to "sign in", new_user_session_path ,class:"btn btn-success"%>
+      <% end %></center>
+    </div>
+
+    <%= yield %>
+  </body>
+</html>

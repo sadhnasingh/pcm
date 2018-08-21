@@ -1,0 +1,63 @@
+<table border="2px" align="center" width="20%", style="background-color: violet ">
+  <td>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @product.try(:name)%>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @product.try(:price)%>
+</p>
+<p><%= image_tag @product.try(:image_url).to_s, style:"height: 70px; width: 100px;" %></p>
+<p>
+  <strong>Category:</strong>
+  <%= @product.category_id %>
+</p>
+</td></table><br>
+<center><td><%= link_to 'Order', orders_myorder_path,  class:"btn btn-success"  %></td>
+<%= link_to "Payment" , new_charge_path,  class:"btn btn-success"  %>
+
+<%= link_to 'Back', products_path,  class:"btn btn-success"  %>
+
+<%if current_user && current_user.admin %>
+ 
+
+<%= link_to 'Edit', edit_product_path(@product), class:"btn btn-success" %> |
+<%end%><br><br>
+<table border="2px" align="center" width="20%", style="background-color: lime ">
+  <td>
+<h2>Comments</h2>
+<% @product.reports.each do |report| %>
+  <p>
+    <strong>Name:</strong>
+    <%= report.Name %>
+  </p>
+ 
+  <p>
+    <strong>Comment:</strong>
+    <%= report.body %>
+  </p>
+<% end %></td></table>
+ <table border="2px" align="center" width="20%", style="background-color: yellow ">
+  <td>
+<h2>Comments on product:</h2>
+<%= form_with(model: [ @product, @product.reports.build ], local: true) do |form| %>
+  <p>
+    <%= form.label :Name %><br>
+    <%= form.text_field :Name %>
+  </p>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+ 
+</td></table>
+<%= link_to 'Back', products_path, class:"btn btn-success" %>
+</center>
