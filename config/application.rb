@@ -16,15 +16,7 @@ module Pcm
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
-# ActionMailer::Base.smtp_settings = {
-#   :address => "smtp.gmail.com",
-#   :port => 587,
-#   :domain => "mail.google.com",
-#   :authentication => "login",
-#   :enable_starttls_auto =>true,
-#   :user_name => "sadhnasingh642@gmail.com"#ENV["GMAIL_USERNAME"],
-#   :password => "12345678" #ENV["GMAIL_PASSWORD"]
-# }
+
 
 
   end
